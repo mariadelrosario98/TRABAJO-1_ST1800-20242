@@ -59,7 +59,37 @@ El consumo de los datos desde las URLs se realizará a través de las APIs que f
 
 Esta estructura proporciona una visión clara del contenido del repositorio y facilita la navegación y comprensión del proyecto.
 
-
-
 ### Estructura del Repositorio
-![image](https://github.com/user-attachments/assets/f3221992-fdcc-43d7-882e-b7a0f76b7b7c)
+```
+│   README.md                           # Contexto, fuente de los datos y componentes de la solución
+|   ARQUITECTURA.drawing.png             # Diagrama de Arquitectura
+│   
+└───1 ETL Python Raw S3                 # AWS GLUE hacia zona RAW
+|   | ETL_TEMP_CHANGE.ipynb             # ETL Cambio de temperatura global
+|   | ETL_ATM_CON.py                    # ETL Concentración de carbono en la atmósfera 
+|   | ETL_SEA_LVLS.py                   # ETL Cambios en los niveles del mar
+|   | ETL_FOR_CARB.py                   # ETL de bosques y carbono capturado
+|   | ETL_LAND_COV.py                   # ETL cobertura de suelo
+|   | ETL_CLIM_DIS.py                   # ETL frecuencias de desastres naturales
+|   |
+└───2 AWS Glue ETL                      # ETLs AWS GLUE hacia zona Trusted
+|   | Glue Trusted ETL TEMP_CHANGE.py   # ETL información Cambio de temperatura global
+|   | Glue Trusted ETL ATM_CON.py       # ETL información Concentración de carbono en la atmósfera
+|   | Glue Trusted ETL SEA_LVLS.py      # ETL información Cambios en los niveles del mar
+|   | Glue Trusted ETL FOR_CARB.py      # ETL información de bosques y carbono capturado
+|   | Glue Trusted ETL LAND_COV.py      # ETL información de cobertura de suelo
+|   | Glue Trusted ETL CLIM_DIS.py      # ETL información de frecuencias de desastres naturales
+└───3 AWS S3 TRUSTED                    # Almacenamiento zona Trusted
+|   |
+└───4 Redshift Creación y ETL           # Creación de tabla Nativa en Redshift y ETL
+|   | redshift_LAND_COV.sql             # ETL información de cobertura de suelo
+|   | redshift_CLIM_DIS.sql             # ETL información frecuencias de desastres naturales
+|   |
+└───5 Consultas SQL                     # Ej Consultas en HIVE, Redshift Spectrum
+|   | 1 Redshift Spectrum.sql           # Consulta Redshift Spectrum
+|   | 2 Hive.sql                        # Consulta Hive
+|   | 3 Athena.sql                      # Athena
+|   |
+└───0 Notebook                          # Notebook pySpark EMR
+|   | set_up_spark_explo_data.ipynb  # Notebook
+```
