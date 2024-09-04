@@ -28,7 +28,7 @@ Usaremos datos de la plataforma de cambio climático del Fondo Monetario Interna
 El consumo de los datos desde las URLs se realizará a través de las APIs que facilita IMF. A través de Python accederemos a ellas con las librerías boto3, json y request (para el procedimiento de API Rest). Luego, convertiremos nuestros datos a formato CSV, para finalizar con la vinculación a un Bucket en S3 de AWS
 
 ## Arquitectura y Componentes para la Solución:
-![arquitectura](ARQUITECTURA.drawio.png)
+![arquitectura](ARQUITECTURA.png)
 **1. S3:** En este servicio almacenaremos en Buckets la información de la zona Raw, donde encontraremos los datos en CSV, y así mismo hacia la zona TRUSTED, en donde tendremos la info procesada y lista para consulta, con la información lista para utilizarse por los otros sistemas
 
 •	Raw: 
