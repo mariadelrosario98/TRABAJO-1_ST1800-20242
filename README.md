@@ -31,9 +31,9 @@ El consumo de los datos desde las URLs se realizará a través de las APIs que f
 ![arquitectura](ARQUITECTURA.png)
 **1. S3:** En este servicio almacenaremos en Buckets la información de la zona Raw, donde encontraremos los datos en CSV, y así mismo hacia la zona TRUSTED, en donde tendremos la info procesada y lista para consulta, con la información lista para utilizarse por los otros sistemas
 
-•	Raw: arn:aws:s3:::rawtrabajo1
+•	Raw: "arn:aws:s3:::rawtrabajo1"
 
-•	Trusted: arn:aws:s3:::trustedtrabajo1
+•	Trusted: "arn:aws:s3:::trustedtrabajo1"
 
 **2. AWS Glue Crawlers:** Generar un diccionario de los datos de la zona RAW que se encuentran en S3
 
