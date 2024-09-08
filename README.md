@@ -51,10 +51,10 @@ El consumo de los datos desde las URLs se realizará a través de las APIs que f
 1. **`README.md`**: Proporciona el contexto, la fuente de los datos y los componentes de la solución.
 2. **`ARQUITECTURA.drawio.png`**: Contiene el diagrama de arquitectura de la solución.
 3. **`1 ETL Python Raw S3`**: Contiene scripts Python para realizar ETL en la zona RAW utilizando AWS Glue.
-4. **`2 AWS Glue ETL`**: Scripts para realizar ETL usando AWS Glue hacia la zona Trusted.
-5. **`3 AWS S3 TRUSTED`**: Directorio para almacenamiento de datos en la zona Trusted.
-6. **`4 Redshift Creación y ETL`**: Scripts SQL para la creación de tablas y ETL en Amazon Redshift.
-7. **`5 Consultas SQL`**: Consultas SQL para realizar análisis en Redshift Spectrum, Hive, y Athena.
+4. **`2 AWS Glue`**: Catalogación AWS Glue hacia la zona Trusted.
+5. **`3 AWS S3 TRUSTED`**: datos depurados en la zona Trusted.
+6. **`4 Redshift`**: Scripts SQL para la creación de tablas.
+7. **`5 Consultas SQL`**: Consultas SQL para realizar análisis en Redshift Spectrum y Hive.
 8. **`0 Notebook`**: Notebooks pySpark para la explotación de datos en EMR.
 
 Esta estructura proporciona una visión clara del contenido del repositorio y facilita la navegación y comprensión del proyecto.
