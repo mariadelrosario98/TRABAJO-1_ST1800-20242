@@ -4,7 +4,8 @@ Los integrantes de este grupo son:
 - Laura Riveros
 - Vivian Sánchez
 - Maria del Rosario Castro Mantilla
-
+## Repositorio completo: 
+https://github.com/mariadelrosario98/TRABAJO-1_ST1800-20242/edit/main/README.md
 ## Contexto
 
 Esta entrega busca profundizar el conocimiento de las arquitecturas de una solución big data de AWS. Para esto escogimos un caso particular sobre el cambio climático. 
