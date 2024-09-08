@@ -31,9 +31,9 @@ El consumo de los datos desde las URLs se realizará a través de las APIs que f
 ![arquitectura](ARQUITECTURA.png)
 **1. S3:** En este servicio almacenaremos en Buckets la información de la zona Raw, donde encontraremos los datos en CSV, y así mismo hacia la zona TRUSTED, en donde tendremos la info procesada y lista para consulta, con la información lista para utilizarse por los otros sistemas
 
-•	Raw: 
+•	Raw: "arn:aws:s3:::rawtrabajo1"
 
-•	Trusted: 
+•	Trusted: "arn:aws:s3:::trustedtrabajo1"
 
 **2. AWS Glue Crawlers:** Generar un diccionario de los datos de la zona RAW que se encuentran en S3
 
@@ -51,10 +51,10 @@ El consumo de los datos desde las URLs se realizará a través de las APIs que f
 1. **`README.md`**: Proporciona el contexto, la fuente de los datos y los componentes de la solución.
 2. **`ARQUITECTURA.drawio.png`**: Contiene el diagrama de arquitectura de la solución.
 3. **`1 ETL Python Raw S3`**: Contiene scripts Python para realizar ETL en la zona RAW utilizando AWS Glue.
-4. **`2 AWS Glue ETL`**: Scripts para realizar ETL usando AWS Glue hacia la zona Trusted.
-5. **`3 AWS S3 TRUSTED`**: Directorio para almacenamiento de datos en la zona Trusted.
-6. **`4 Redshift Creación y ETL`**: Scripts SQL para la creación de tablas y ETL en Amazon Redshift.
-7. **`5 Consultas SQL`**: Consultas SQL para realizar análisis en Redshift Spectrum, Hive, y Athena.
+4. **`2 AWS Glue`**: Catalogación AWS Glue hacia la zona Trusted.
+5. **`3 AWS S3 TRUSTED`**: datos depurados en la zona Trusted.
+6. **`4 Redshift`**: Scripts SQL para la creación de tablas.
+7. **`5 Consultas SQL`**: Consultas SQL para realizar análisis en Redshift Spectrum y Hive.
 8. **`0 Notebook`**: Notebooks pySpark para la explotación de datos en EMR.
 
 Esta estructura proporciona una visión clara del contenido del repositorio y facilita la navegación y comprensión del proyecto.
@@ -72,24 +72,24 @@ Esta estructura proporciona una visión clara del contenido del repositorio y fa
 |   | ETL_LAND_COV.py                   # ETL cobertura de suelo
 |   | ETL_CLIM_DIS.py                   # ETL frecuencias de desastres naturales
 |   |
-└───2 AWS Glue ETL                      # ETLs AWS GLUE hacia zona Trusted
-|   | Glue Trusted ETL TEMP_CHANGE.py   # ETL información Cambio de temperatura global
-|   | Glue Trusted ETL ATM_CON.py       # ETL información Concentración de carbono en la atmósfera
-|   | Glue Trusted ETL SEA_LVLS.py      # ETL información Cambios en los niveles del mar
-|   | Glue Trusted ETL FOR_CARB.py      # ETL información de bosques y carbono capturado
-|   | Glue Trusted ETL LAND_COV.py      # ETL información de cobertura de suelo
-|   | Glue Trusted ETL CLIM_DIS.py      # ETL información de frecuencias de desastres naturales
+└───2 AWS Glue - CATALOGACIÓN           # AWS GLUE como catalogador
+|   | End-points                        # Consumo de S3
+|   | Crawlers                          # Crawlers de datos
+|   | Tablas                            # Crawlers de datos
 └───3 AWS S3 TRUSTED                    # Almacenamiento zona Trusted
-|   |
-└───4 Redshift Creación y ETL           # Creación de tabla Nativa en Redshift y ETL
-|   | redshift_LAND_COV.sql             # ETL información de cobertura de suelo
-|   | redshift_CLIM_DIS.sql             # ETL información frecuencias de desastres naturales
-|   |
+|   | trusted zone                      # De esta zona es que se consumen los datos para realizar consultas
+└───4 Redshift                          # Creación de tabla externa en Redshift
+|   | Creación de tablas              
 └───5 Consultas SQL                     # Ej Consultas en HIVE, Redshift Spectrum
 |   | 1 Redshift Spectrum.sql           # Consulta Redshift Spectrum
 |   | 2 Hive.sql                        # Consulta Hive
-|   | 3 Athena.sql                      # Athena
 |   |
 └───0 Notebook                          # Notebook pySpark EMR
-|   | set_up_spark_explo_data.ipynb  # Notebook
+|   | SPARK - JUPYTER.ipynb             # Notebook
+|   | ETL_ATM_CON_PROCESS.ipynb         # Notebook
+|   | ETL_CLIM_DIS_PROCESS.ipynb        # Notebook
+|   | ETL_FOR_CARB_PROCESS.ipynb        # Notebook
+|   | ETL_LAND_COV_PROCESS.ipynb        # Notebook
+|   | ETL_SEA_LVLS_PROCESS.ipynb        # Notebook
+|   | ETL_TEMP_CHANGE_PROCESS.ipynb     # Notebook
 ```
